@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  mspedidos:
+    image: emerlopes95/ms-item
+    container_name: msitem
+    ports:
+      - "8082:8082"
+    networks:
+      - bridge-ecommerce
+
+  msprodutos:
+    image: emerlopes95/ms-userauth
+    container_name: msuserauth
+    ports:
+      - "8081:8081"
+    networks:
+      - bridge-ecommerce
+
+  msclientes:
+    image: emerlopes95/bff-ecommerce
+    container_name: msbffecommerce
+    ports:
+      - "8080:8080"
+    networks:
+      - bridge-ecommerce
+
+networks:
+  rede:
+    driver: bridge-ecommerce
