@@ -7,20 +7,21 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
-@FeignClient(name = "user-authentication", url = "http://localhost:8080")
-public interface CustomerauthenticationClient {
 
-    @PostMapping("/user/register-guest")
+@FeignClient(name = "user-authentication", url = "http://localhost:8080/users")
+public interface UserAuthenticationClient {
+
+    @PostMapping("/register-guest")
     Optional<CustomResponseDTO<CustomerauthenticationResponseDTO>> registerGuestUser(
             @RequestBody RegisterUserRequestDTO registerUserRequestDTO
     );
 
-    @PostMapping("/user/register-user")
+    @PostMapping("/register-user")
     Optional<CustomResponseDTO<CustomerauthenticationResponseDTO>> registerUser(
             @RequestBody RegisterUserRequestDTO registerUserRequestDTO
     );
 
-    @PostMapping("/user/register-admin")
+    @PostMapping("/register-admin")
     Optional<CustomResponseDTO<CustomerauthenticationResponseDTO>> registerAdminUser(
             @RequestBody RegisterUserRequestDTO registerUserRequestDTO
     );
