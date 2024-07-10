@@ -2,16 +2,16 @@ package br.com.emerlopes.bffecommerce.domain.usecase.userauthentication;
 
 import br.com.emerlopes.bffecommerce.application.shared.response.UserRoleEnum;
 import br.com.emerlopes.bffecommerce.domain.entity.RegisterUserDomainEntity;
-import br.com.emerlopes.bffecommerce.domain.repository.RegisterUserDomainRepository;
+import br.com.emerlopes.bffecommerce.domain.repository.UserDomainRepository;
 import org.springframework.stereotype.Service;
 
 @Service
 public class RegisterUserUseCaseImpl implements RegisterUserUseCase {
 
-    private final RegisterUserDomainRepository registerUserDomainRepository;
+    private final UserDomainRepository registerUserDomainRepository;
 
     public RegisterUserUseCaseImpl(
-            final RegisterUserDomainRepository registerUserDomainRepository
+            final UserDomainRepository registerUserDomainRepository
     ) {
         this.registerUserDomainRepository = registerUserDomainRepository;
     }
