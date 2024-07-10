@@ -20,6 +20,7 @@ public interface UserAuthenticationClient {
 
     @PostMapping("/register-admin")
     void registerAdminUser(
+            @RequestHeader(value = "Authorization") String authorization,
             @RequestBody RegisterUserRequestDTO registerUserRequestDTO
     );
 

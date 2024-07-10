@@ -40,7 +40,15 @@ public class UserDomainRepositoryImpl implements UserDomainRepository {
     public void registerAdminUser(
             final RegisterUserDomainEntity registerUserDomainEntity
     ) {
-        userAuthenticationClient.registerAdminUser(this.getRegisterUserRequestDTO(registerUserDomainEntity));
+
+        if (registerUserDomainEntity.getAuthorization() == null) {
+            throw new IllegalArgumentException("Authorization is required");
+        }
+
+        userAuthenticationClient.registerAdminUser(
+                registerUserDomainEntity.getAuthorization(),
+                this.getRegisterUserRequestDTO(registerUserDomainEntity)
+        );
     }
 
     @Override

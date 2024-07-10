@@ -2,6 +2,7 @@ package br.com.emerlopes.bffecommerce.application.entrypoint.rest.usercontroller
 
 import br.com.emerlopes.bffecommerce.application.entrypoint.rest.usercontroller.dto.request.RegisterUserRequestBffDTO;
 import br.com.emerlopes.bffecommerce.application.entrypoint.rest.usercontroller.dto.response.UserTokenResponseBffDTO;
+import br.com.emerlopes.bffecommerce.application.shared.response.CustomResponseDTO;
 import br.com.emerlopes.bffecommerce.domain.entity.RegisterUserDomainEntity;
 import br.com.emerlopes.bffecommerce.domain.entity.UserTokenDomainEntity;
 import br.com.emerlopes.bffecommerce.domain.usecase.userauthentication.RegisterUserUseCase;
@@ -38,7 +39,13 @@ public class UserController {
         try {
 
             final var executionResult = userTokenUseCase.execute(this.toDomainEntity(username, password));
-            return ResponseEntity.status(HttpStatus.CREATED).body(this.toResponseDTO(executionResult));
+            return ResponseEntity.status(HttpStatus.CREATED).body(
+                    new CustomResponseDTO<UserTokenResponseBffDTO>()
+                            .setData(
+                                    this.toResponseDTO(executionResult
+                                    )
+                            )
+            );
 
         } catch (
                 final Throwable throwable
@@ -52,12 +59,12 @@ public class UserController {
 
     @PostMapping("/register-user")
     public ResponseEntity<?> registerGuest(
+            final @RequestHeader(value = "Authorization", required = false) String authorization,
             final @RequestBody RegisterUserRequestBffDTO request
     ) {
-
         try {
 
-            registerUserUseCase.execute(this.toDomainEntity(request));
+            registerUserUseCase.execute(this.toDomainEntity(authorization, request));
             logger.info("User registered");
 
         } catch (
@@ -73,12 +80,14 @@ public class UserController {
     }
 
     private RegisterUserDomainEntity toDomainEntity(
+            final String authorization,
             final RegisterUserRequestBffDTO request
     ) {
         return RegisterUserDomainEntity.builder()
                 .username(request.getUsername())
                 .password(request.getPassword())
                 .role(request.getRole())
+                .authorization(authorization)
                 .build();
     }
 

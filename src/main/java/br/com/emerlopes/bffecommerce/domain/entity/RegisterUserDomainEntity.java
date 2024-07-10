@@ -14,4 +14,5 @@ public class RegisterUserDomainEntity {
     private String username;
     private String password;
     private String role;
+    private String authorization;
 }
