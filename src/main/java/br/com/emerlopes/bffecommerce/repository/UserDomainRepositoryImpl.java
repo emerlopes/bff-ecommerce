@@ -1,19 +1,24 @@
 package br.com.emerlopes.bffecommerce.repository;
 
 import br.com.emerlopes.bffecommerce.domain.entity.RegisterUserDomainEntity;
-import br.com.emerlopes.bffecommerce.domain.repository.RegisterUserDomainRepository;
+import br.com.emerlopes.bffecommerce.domain.entity.UserTokenDomainEntity;
+import br.com.emerlopes.bffecommerce.domain.repository.UserDomainRepository;
+import br.com.emerlopes.bffecommerce.infrastructure.integrations.userauthentication.UserTokenClient;
 import br.com.emerlopes.bffecommerce.infrastructure.integrations.userauthentication.UserAuthenticationClient;
 import br.com.emerlopes.bffecommerce.infrastructure.integrations.userauthentication.request.RegisterUserRequestDTO;
 import org.springframework.stereotype.Service;
 
 @Service
-public class RegisterUserDomainRepositoryImpl implements RegisterUserDomainRepository {
+public class UserDomainRepositoryImpl implements UserDomainRepository {
 
+    private final UserTokenClient userTokenClient;
     private final UserAuthenticationClient userAuthenticationClient;
 
-    public RegisterUserDomainRepositoryImpl(
+    public UserDomainRepositoryImpl(
+            final UserTokenClient userTokenClient,
             final UserAuthenticationClient userAuthenticationClient
     ) {
+        this.userTokenClient = userTokenClient;
         this.userAuthenticationClient = userAuthenticationClient;
     }
 
@@ -36,6 +41,21 @@ public class RegisterUserDomainRepositoryImpl implements RegisterUserDomainRepos
             final RegisterUserDomainEntity registerUserDomainEntity
     ) {
         userAuthenticationClient.registerAdminUser(this.getRegisterUserRequestDTO(registerUserDomainEntity));
+    }
+
+    @Override
+    public UserTokenDomainEntity getUserToken(
+            final UserTokenDomainEntity userTokenDomainEntity
+    ) {
+        final var userToken = userTokenClient.getToken(
+                userTokenDomainEntity.getUsername(),
+                userTokenDomainEntity.getPassword()
+        );
+
+        return UserTokenDomainEntity.builder()
+                .username(userToken.getData().getUsername())
+                .token(userToken.getData().getToken())
+                .build();
     }
 
     private RegisterUserRequestDTO getRegisterUserRequestDTO(
