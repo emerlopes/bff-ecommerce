@@ -5,7 +5,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
 
-@FeignClient(name = "user-authentication", url = "http://localhost:8080/users")
+@FeignClient(name = "user-authentication", url = "http://localhost:8081/users")
 public interface UserAuthenticationClient {
 
     @PostMapping("/register-guest")
