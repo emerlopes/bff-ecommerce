@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
-@EnableFeignClients({"br.com.emerlopes.bffecommerce.infrastructure.*"})
+@EnableFeignClients({"br.com.emerlopes.bffecommerce.infrastructure.integrations*"})
 public class BffEcommerceApplication {
 
     public static void main(String[] args) {
