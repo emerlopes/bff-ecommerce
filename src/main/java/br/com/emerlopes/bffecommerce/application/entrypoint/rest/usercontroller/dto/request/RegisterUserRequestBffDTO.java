@@ -9,5 +9,5 @@ import lombok.Data;
 public class RegisterUserRequestBffDTO {
     private String username;
     private String password;
-    private UserRoleEnum role;
+    private String role;
 }
