@@ -10,18 +10,18 @@ public interface UserAuthenticationClient {
 
     @PostMapping("/register-guest")
     void registerGuestUser(
-            @RequestBody RegisterUserRequestDTO registerUserRequestDTO
+            final @RequestBody RegisterUserRequestDTO registerUserRequestDTO
     );
 
     @PostMapping("/register-user")
     void registerUser(
-            @RequestBody RegisterUserRequestDTO registerUserRequestDTO
+            final @RequestBody RegisterUserRequestDTO registerUserRequestDTO
     );
 
     @PostMapping("/register-admin")
     void registerAdminUser(
-            @RequestHeader(value = "Authorization") String authorization,
-            @RequestBody RegisterUserRequestDTO registerUserRequestDTO
+            final @RequestHeader(value = "Authorization") String authorization,
+            final @RequestBody RegisterUserRequestDTO registerUserRequestDTO
     );
 
 }
