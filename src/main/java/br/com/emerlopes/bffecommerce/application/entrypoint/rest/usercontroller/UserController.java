@@ -72,7 +72,7 @@ public class UserController {
         ) {
 
             logger.error("Error registering user", throwable);
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+            throw throwable;
 
         }
 
