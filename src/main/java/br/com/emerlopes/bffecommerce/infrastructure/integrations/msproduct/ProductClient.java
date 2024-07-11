@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import java.util.List;
 
 
-@FeignClient(name = "ms-product", url = "http://localhost:8082/produtos")
+@FeignClient(name = "ms-product", url = "${application.itemmanagement.host}/produtos")
 public interface ProductClient {
 
     @PostMapping("/cadastrar-produtos")

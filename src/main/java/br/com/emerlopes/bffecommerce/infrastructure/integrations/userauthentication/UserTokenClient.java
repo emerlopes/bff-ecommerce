@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
-@FeignClient(name = "user-token", url = "http://localhost:8081/auth")
+@FeignClient(name = "user-token", url = "${application.customerauthentication.host}/auth")
 public interface UserTokenClient {
 
     @PostMapping("/token")
