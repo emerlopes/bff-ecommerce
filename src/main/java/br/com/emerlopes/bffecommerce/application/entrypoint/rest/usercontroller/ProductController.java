@@ -1,6 +1,5 @@
 package br.com.emerlopes.bffecommerce.application.entrypoint.rest.usercontroller;
 
-import br.com.emerlopes.bffecommerce.application.entrypoint.rest.usercontroller.dto.request.RegisterUserRequestBffDTO;
 import br.com.emerlopes.bffecommerce.domain.shared.RequestParametersStore;
 import br.com.emerlopes.bffecommerce.domain.usecase.product.RegisterProductsUseCase;
 import org.springframework.http.HttpStatus;
