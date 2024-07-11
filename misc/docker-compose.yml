@@ -7,7 +7,7 @@ services:
     ports:
       - "8082:8082"
     networks:
-      - bridge-ecommerce
+      - rede
 
   msuserauth:
     image: emerlopes95/customerauthentication
@@ -15,7 +15,7 @@ services:
     ports:
       - "8081:8081"
     networks:
-      - bridge-ecommerce
+      - rede
 
   msbffecommerce:
     image: emerlopes95/bffecommerce
@@ -23,8 +23,8 @@ services:
     ports:
       - "8080:8080"
     networks:
-      - bridge-ecommerce
+      - rede
 
 networks:
   rede:
-    driver: bridge-ecommerce
+    driver: bridge
