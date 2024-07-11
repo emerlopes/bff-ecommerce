@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   msitem:
-    image: emerlopes95/itemmanagement
+    image: emerlopes95/itemmanagement:latest
     container_name: itemmanagement
     ports:
       - "8082:8082"
@@ -10,7 +10,7 @@ services:
       - rede
 
   msuserauth:
-    image: emerlopes95/customerauthentication
+    image: emerlopes95/customerauthentication:latest
     container_name: customerauthentication
     ports:
       - "8081:8081"
@@ -18,7 +18,7 @@ services:
       - rede
 
   msbffecommerce:
-    image: emerlopes95/bffecommerce
+    image: emerlopes95/bffecommerce:latest
     container_name: bffecommerce
     ports:
       - "8080:8080"
