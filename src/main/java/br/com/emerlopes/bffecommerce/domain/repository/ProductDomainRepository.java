@@ -8,4 +8,6 @@ public interface ProductDomainRepository {
     void registerProducts();
 
     List<ProductDomainEntity> getProducts();
+
+    ProductDomainEntity updateProduct(ProductDomainEntity product);
 }
