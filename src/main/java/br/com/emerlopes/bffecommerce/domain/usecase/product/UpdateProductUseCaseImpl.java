@@ -6,11 +6,11 @@ import org.springframework.stereotype.Service;
 
 
 @Service
-public class UpdatePriceProductUseCaseImpl implements UpdatePriceProductUseCase {
+public class UpdateProductUseCaseImpl implements UpdateProductUseCase {
 
     private final ProductDomainRepository productDomainRepository;
 
-    public UpdatePriceProductUseCaseImpl(
+    public UpdateProductUseCaseImpl(
             final ProductDomainRepository productDomainRepository
     ) {
         this.productDomainRepository = productDomainRepository;
