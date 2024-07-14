@@ -1,6 +1,6 @@
-package br.com.emerlopes.bffecommerce.application.entrypoint.rest.usercontroller;
+package br.com.emerlopes.bffecommerce.application.entrypoint.rest;
 
-import br.com.emerlopes.bffecommerce.application.entrypoint.rest.usercontroller.dto.request.UpdateProductRequestBffDTO;
+import br.com.emerlopes.bffecommerce.application.entrypoint.rest.dto.request.UpdateProductRequestBffDTO;
 import br.com.emerlopes.bffecommerce.application.shared.response.CustomResponseDTO;
 import br.com.emerlopes.bffecommerce.domain.entity.ProductDomainEntity;
 import br.com.emerlopes.bffecommerce.domain.shared.RequestParametersStore;

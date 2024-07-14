@@ -1,6 +1,5 @@
-package br.com.emerlopes.bffecommerce.application.entrypoint.rest.usercontroller.dto.request;
+package br.com.emerlopes.bffecommerce.application.entrypoint.rest.dto.request;
 
-import br.com.emerlopes.bffecommerce.application.shared.response.UserRoleEnum;
 import lombok.Builder;
 import lombok.Data;
 

@@ -1,7 +1,15 @@
 version: '3.8'
 
 services:
-  msitem:
+  shoppingcart:
+    image: emerlopes95/shoppingcart:latest
+    container_name: shoppingcart
+    ports:
+      - "8083:8083"
+    networks:
+      - rede
+
+  itemmanagement:
     image: emerlopes95/itemmanagement:latest
     container_name: itemmanagement
     ports:
@@ -9,7 +17,7 @@ services:
     networks:
       - rede
 
-  msuserauth:
+  customerauthentication:
     image: emerlopes95/customerauthentication:latest
     container_name: customerauthentication
     ports:
