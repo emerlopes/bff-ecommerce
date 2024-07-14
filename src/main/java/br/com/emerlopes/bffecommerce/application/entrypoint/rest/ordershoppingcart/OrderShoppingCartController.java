@@ -1,5 +1,7 @@
-package br.com.emerlopes.bffecommerce.application.entrypoint.rest;
+package br.com.emerlopes.bffecommerce.application.entrypoint.rest.ordershoppingcart;
 
+import br.com.emerlopes.bffecommerce.application.entrypoint.rest.ordershoppingcart.examples.OrdersCheckoutRequestBodyExample;
+import br.com.emerlopes.bffecommerce.application.entrypoint.rest.ordershoppingcart.examples.UpdateOrdersCheckoutRequestBodyExample;
 import br.com.emerlopes.bffecommerce.application.shared.response.CustomResponseDTO;
 import br.com.emerlopes.bffecommerce.domain.entity.OrderDomainEntity;
 import br.com.emerlopes.bffecommerce.domain.entity.ProductShoppingCartDomainEntity;
@@ -10,6 +12,10 @@ import br.com.emerlopes.bffecommerce.domain.usecase.order.FindOrderByIdUseCase;
 import br.com.emerlopes.bffecommerce.domain.usecase.order.FindOrderByUsernameUseCase;
 import br.com.emerlopes.bffecommerce.domain.usecase.order.UpdateOrderStatusUseCase;
 import br.com.emerlopes.bffecommerce.infrastructure.integrations.shoppingcart.request.OrderRequestDTO;
+import br.com.emerlopes.bffecommerce.application.entrypoint.rest.ordershoppingcart.dto.UpdateOrderBffRequestDTO;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +23,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/orders")
+@Tag(name = "Orders", description = "API para gerenciamento de pedidos")
 public class OrderShoppingCartController {
 
     private final CreateOrderToShoppingCartUseCase createOrderToShoppingCartUseCase;
@@ -37,6 +44,7 @@ public class OrderShoppingCartController {
     }
 
     @PostMapping("/checkout")
+    @OrdersCheckoutRequestBodyExample
     public ResponseEntity<?> checkout(
             final @RequestHeader(value = "Authorization") String authorization,
             final @RequestBody OrderRequestDTO orderRequestDTO
@@ -66,6 +74,7 @@ public class OrderShoppingCartController {
     }
 
     @GetMapping("/{orderId}")
+    @Operation(summary = "Encontrar pedido por ID", description = "Retorna um pedido específico pelo ID")
     public ResponseEntity<?> findOrderById(
             final @RequestHeader(value = "Authorization") String authorization,
             final @PathVariable Long orderId
@@ -81,6 +90,7 @@ public class OrderShoppingCartController {
     }
 
     @GetMapping("/user/{username}")
+    @Operation(summary = "Encontrar pedidos por usuário", description = "Retorna os pedidos de um usuário específico pelo nome de usuário")
     public ResponseEntity<?> findOrderByUsername(
             final @RequestHeader(value = "Authorization") String authorization,
             final @PathVariable("username") String username
@@ -96,10 +106,12 @@ public class OrderShoppingCartController {
     }
 
     @PostMapping("/update-status/{orderId}")
+    @UpdateOrdersCheckoutRequestBodyExample
     public ResponseEntity<?> updateOrderStatus(
-            final @RequestHeader(value = "Authorization") String authorization,
-            final @PathVariable("orderId") Long orderId,
-            final @RequestBody OrderRequestDTO orderRequestDTO
+            @Parameter(description = "Token de autorização", example = "Bearer token") final @RequestHeader(value = "Authorization") String authorization,
+
+            @Parameter(description = "ID do pedido", example = "1") final @PathVariable("orderId") Long orderId,
+            final @RequestBody UpdateOrderBffRequestDTO updateOrderBffRequestDTO
     ) {
 
         RequestParametersStore.removeAuthorization();
@@ -109,7 +121,7 @@ public class OrderShoppingCartController {
                 OrderDomainEntity.builder()
                         .id(orderId)
                         .orderStatusEnum(
-                                OrderStatusEnum.fromString(orderRequestDTO.getStatus())
+                                OrderStatusEnum.fromString(updateOrderBffRequestDTO.getStatus())
                         )
                         .build()
         );
