@@ -1,7 +1,7 @@
-package br.com.emerlopes.bffecommerce.application.entrypoint.rest.usercontroller;
+package br.com.emerlopes.bffecommerce.application.entrypoint.rest;
 
-import br.com.emerlopes.bffecommerce.application.entrypoint.rest.usercontroller.dto.request.RegisterUserRequestBffDTO;
-import br.com.emerlopes.bffecommerce.application.entrypoint.rest.usercontroller.dto.response.UserTokenResponseBffDTO;
+import br.com.emerlopes.bffecommerce.application.entrypoint.rest.dto.response.UserTokenResponseBffDTO;
+import br.com.emerlopes.bffecommerce.application.entrypoint.rest.dto.request.RegisterUserRequestBffDTO;
 import br.com.emerlopes.bffecommerce.application.shared.response.CustomResponseDTO;
 import br.com.emerlopes.bffecommerce.domain.entity.RegisterUserDomainEntity;
 import br.com.emerlopes.bffecommerce.domain.entity.UserTokenDomainEntity;
