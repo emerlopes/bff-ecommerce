@@ -15,9 +15,12 @@
 
 - Dependências: O projeto utiliza o Gradle como gerenciador de dependências e build.
 
+- Requisitos: Para executar o projeto, é necessário ter o JDK 17 ou superior e o Gradle 6.8 ou superior instalados na
+  máquina e executar todos os microserviços necessários.
+
 ## Arquitetura
 
-![arquitetura](./docs/images/desenho-solucao.drawio.png)
+![arquitetura](misc/images/desenho-solucao.drawio.png)
 
 ## Estrutura do Projeto
 
@@ -29,10 +32,7 @@ código modular e fácil de manter.
 | `/application`    | Camada de Aplicação      | Contém os serviços e controladores responsáveis pelo processamento das solicitações e pela lógica de negócio.              |
 | `/domain`         | Camada de Domínio        | Define as entidades do domínio, repositórios e regras de negócio que regem o comportamento do sistema.                     |
 | `/infrastructure` | Camada de Infraestrutura | Gerencia a comunicação com sistemas externos, como bancos de dados e serviços externos, e configurações de infraestrutura. |
-| /repository       | Camada de Repositório    | Responsável por acessar o banco de dados e realizar operações de leitura e gravação.                                       |
-
-- Requisitos: Para executar o projeto, é necessário ter o JDK 17 ou superior e o Gradle 6.8 ou superior instalados na
-  máquina e executar todos os microserviços necessários.
+| `/repository`     | Camada de Repositório    | Responsável por acessar o banco de dados e realizar operações de leitura e gravação.                                       |
 
 ## Instruções de Uso
 
@@ -51,7 +51,7 @@ código modular e fácil de manter.
 3. Execute o `docker-compose` para iniciar os serviços:
 
 - Certifique-se de que o Docker está instalado e em execução na sua máquina.
-- Abra um terminal e navegue até o diretório do projeto onde o arquivo `docker-compose.yml` está localizado.
+- Abra um terminal e navegue até o diretório do projeto.
 - Execute o comando abaixo para baixar as imagens necessárias:
     ```bash
     docker-compose -f misc/docker-compose.yml pull
@@ -67,10 +67,9 @@ código modular e fácil de manter.
 2. [Microserviço de Catálogo de Produtos - `productcatalog`](https://github.com/emerlopes/itemmanagement)
 3. [Microserviço de Pagamento - `payments`](https://github.com/emerlopes/payments)
 4. [Microserviço de Carrinho de Compras - `shoppingcart`](https://github.com/emerlopes/shoppingcart)
-5. [Microserviço de Pedidos - `orders`](https://github.com/emerlopes/shoppingcart)
 
 - Exemplo de Requisição: Para facilitar a chamada das requisições, a collection da API pode ser encontrada no diretório
-  `/collection`.
+  `misc/collection`.
 
 ## Endpoints
 
