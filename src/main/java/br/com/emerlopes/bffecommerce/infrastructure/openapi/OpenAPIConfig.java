@@ -16,7 +16,7 @@ public class OpenAPIConfig {
                         .title("API de E-commerce")
                         .version("1.0")
                         .description("Documentação da API BFF E-commerce")
-                        .contact(new Contact().name("Seu Nome").email("seuemail@example.com"))
+                        .contact(new Contact().name("Seu Nome").email("email@example.com"))
                         .license(new License().name("Apache 2.0").url("http://springdoc.org")));
     }
 }
