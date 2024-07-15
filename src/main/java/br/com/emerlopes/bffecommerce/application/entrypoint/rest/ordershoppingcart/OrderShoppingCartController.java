@@ -109,9 +109,11 @@ public class OrderShoppingCartController {
     @PostMapping("/update-status/{orderId}")
     @UpdateOrdersCheckoutRequestBodyExample
     public ResponseEntity<?> updateOrderStatus(
-            @Parameter(description = "Token de autorização", example = "Bearer token") final @RequestHeader(value = "Authorization") String authorization,
+            @Parameter(description = "Token de autorização", example = "Bearer token")
+            final @RequestHeader(value = "Authorization") String authorization,
 
-            @Parameter(description = "ID do pedido", example = "1") final @PathVariable("orderId") Long orderId,
+            @Parameter(description = "ID do pedido", example = "1")
+            final @PathVariable("orderId") Long orderId,
             final @RequestBody UpdateOrderBffRequestDTO updateOrderBffRequestDTO
     ) {
 
