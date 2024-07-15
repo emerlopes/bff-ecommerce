@@ -2,8 +2,8 @@ version: '3.8'
 
 services:
 
-  ordermanagement:
-    image: emerlopes95/payment:latest
+  payments:
+    image: emerlopes95/payments:latest
     container_name: payments
     ports:
       - "8084:8084"
