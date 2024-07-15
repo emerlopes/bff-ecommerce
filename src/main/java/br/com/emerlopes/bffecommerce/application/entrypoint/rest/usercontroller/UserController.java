@@ -1,13 +1,14 @@
-package br.com.emerlopes.bffecommerce.application.entrypoint.rest;
+package br.com.emerlopes.bffecommerce.application.entrypoint.rest.usercontroller;
 
-import br.com.emerlopes.bffecommerce.application.entrypoint.rest.dto.response.UserTokenResponseBffDTO;
-import br.com.emerlopes.bffecommerce.application.entrypoint.rest.dto.request.RegisterUserRequestBffDTO;
+import br.com.emerlopes.bffecommerce.application.entrypoint.rest.usercontroller.examples.GetTokenResponseExample;
+import br.com.emerlopes.bffecommerce.application.entrypoint.rest.usercontroller.examples.RegisterUserResponseExample;
+import br.com.emerlopes.bffecommerce.application.entrypoint.rest.usercontroller.response.UserTokenResponseBffDTO;
+import br.com.emerlopes.bffecommerce.application.entrypoint.rest.usercontroller.request.RegisterUserRequestBffDTO;
 import br.com.emerlopes.bffecommerce.application.shared.response.CustomResponseDTO;
 import br.com.emerlopes.bffecommerce.domain.entity.RegisterUserDomainEntity;
 import br.com.emerlopes.bffecommerce.domain.entity.UserTokenDomainEntity;
 import br.com.emerlopes.bffecommerce.domain.usecase.userauthentication.RegisterUserUseCase;
 import br.com.emerlopes.bffecommerce.domain.usecase.usertoken.UserTokenUseCase;
-import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,7 +35,7 @@ public class UserController {
     }
 
     @PostMapping("/token")
-    @Operation(summary = "Obter token", description = "Gera um token para o usuário com base nas credenciais fornecidas")
+    @GetTokenResponseExample
     public ResponseEntity<?> getToken(
             @RequestParam String username,
             @RequestParam String password
@@ -59,7 +60,7 @@ public class UserController {
     }
 
     @PostMapping("/register-user")
-    @Operation(summary = "Registrar usuário", description = "Registra um novo usuário na plataforma")
+    @RegisterUserResponseExample
     public ResponseEntity<?> registerGuest(
             final @RequestHeader(value = "Authorization", required = false) String authorization,
             final @RequestBody RegisterUserRequestBffDTO request

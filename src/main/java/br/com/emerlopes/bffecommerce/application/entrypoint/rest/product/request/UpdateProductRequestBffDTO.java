@@ -1,4 +1,4 @@
-package br.com.emerlopes.bffecommerce.application.entrypoint.rest.dto.request;
+package br.com.emerlopes.bffecommerce.application.entrypoint.rest.product.request;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Builder;

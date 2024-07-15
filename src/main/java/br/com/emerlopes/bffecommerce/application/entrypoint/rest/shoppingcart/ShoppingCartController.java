@@ -1,5 +1,8 @@
-package br.com.emerlopes.bffecommerce.application.entrypoint.rest;
+package br.com.emerlopes.bffecommerce.application.entrypoint.rest.shoppingcart;
 
+import br.com.emerlopes.bffecommerce.application.entrypoint.rest.shoppingcart.examples.AddProductToShoppingCartResponseExample;
+import br.com.emerlopes.bffecommerce.application.entrypoint.rest.shoppingcart.examples.GetShoppingCartByUseNameResponseExample;
+import br.com.emerlopes.bffecommerce.application.entrypoint.rest.shoppingcart.examples.RemoveProductFromShoppingCartResponseExample;
 import br.com.emerlopes.bffecommerce.application.shared.response.CustomResponseDTO;
 import br.com.emerlopes.bffecommerce.domain.entity.ProductShoppingCartDomainEntity;
 import br.com.emerlopes.bffecommerce.domain.entity.ShoppingCartDomainEntity;
@@ -11,7 +14,6 @@ import br.com.emerlopes.bffecommerce.infrastructure.integrations.msproduct.reque
 import br.com.emerlopes.bffecommerce.infrastructure.integrations.shoppingcart.request.ShoppingCartProductRequestDTO;
 import br.com.emerlopes.bffecommerce.infrastructure.integrations.shoppingcart.response.ProductDTO;
 import br.com.emerlopes.bffecommerce.infrastructure.integrations.shoppingcart.response.ShoppingCartResponseDTO;
-import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -38,7 +40,7 @@ public class ShoppingCartController {
     }
 
     @GetMapping("/{username}")
-    @Operation(summary = "Obter carrinho de compras", description = "Retorna o carrinho de compras do usuário especificado")
+    @GetShoppingCartByUseNameResponseExample
     public ResponseEntity<?> getShoppingCartByUsername(
             final @RequestHeader(value = "Authorization") String authorization,
             final @PathVariable("username") String username
@@ -52,7 +54,7 @@ public class ShoppingCartController {
     }
 
     @PostMapping("/add-product/{username}")
-    @Operation(summary = "Adicionar produto ao carrinho", description = "Adiciona um produto ao carrinho de compras do usuário especificado")
+    @AddProductToShoppingCartResponseExample
     public ResponseEntity<?> addProductToShoppingCart(
             final @RequestHeader(value = "Authorization") String authorization,
             final @PathVariable("username") String username,
@@ -76,7 +78,7 @@ public class ShoppingCartController {
     }
 
     @PostMapping("/remove-product/{username}")
-    @Operation(summary = "Remover produto do carrinho", description = "Remove um produto do carrinho de compras do usuário especificado")
+    @RemoveProductFromShoppingCartResponseExample
     public ResponseEntity<?> removeProductFromShoppingCart(
             final @RequestHeader(value = "Authorization") String authorization,
             final @PathVariable("username") String username,

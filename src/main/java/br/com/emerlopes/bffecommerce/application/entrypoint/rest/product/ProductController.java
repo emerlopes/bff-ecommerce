@@ -1,13 +1,13 @@
-package br.com.emerlopes.bffecommerce.application.entrypoint.rest;
+package br.com.emerlopes.bffecommerce.application.entrypoint.rest.product;
 
-import br.com.emerlopes.bffecommerce.application.entrypoint.rest.dto.request.UpdateProductRequestBffDTO;
+import br.com.emerlopes.bffecommerce.application.entrypoint.rest.product.request.UpdateProductRequestBffDTO;
+import br.com.emerlopes.bffecommerce.application.entrypoint.rest.product.examples.*;
 import br.com.emerlopes.bffecommerce.application.shared.response.CustomResponseDTO;
 import br.com.emerlopes.bffecommerce.domain.entity.ProductDomainEntity;
 import br.com.emerlopes.bffecommerce.domain.shared.RequestParametersStore;
 import br.com.emerlopes.bffecommerce.domain.usecase.product.GetProductsUseCase;
 import br.com.emerlopes.bffecommerce.domain.usecase.product.RegisterProductsUseCase;
 import br.com.emerlopes.bffecommerce.domain.usecase.product.UpdateProductUseCase;
-import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -38,7 +38,7 @@ public class ProductController {
     }
 
     @PostMapping("/register")
-    @Operation(summary = "Registrar produtos", description = "Registra novos produtos na plataforma")
+    @RegisterProductsResponseExample
     public ResponseEntity<?> registerProducts(
             final @RequestHeader(value = "Authorization") String authorization
     ) {
@@ -54,7 +54,7 @@ public class ProductController {
     }
 
     @GetMapping()
-    @Operation(summary = "Obter produtos", description = "Retorna uma lista de produtos registrados")
+    @GetProductsResponseExample
     public ResponseEntity<?> getProducts(
             final @RequestHeader(value = "Authorization") String authorization
     ) {
@@ -73,7 +73,7 @@ public class ProductController {
     }
 
     @PostMapping("/update/{id}")
-    @Operation(summary = "Atualizar produto", description = "Atualiza as informações de um produto específico")
+    @UpdateProductResponseExample
     public ResponseEntity<?> updateProduct(
             final @RequestHeader(value = "Authorization") String authorization,
             final @PathVariable("id") Long id,
@@ -104,7 +104,7 @@ public class ProductController {
     }
 
     @PostMapping("/update-price/{id}")
-    @Operation(summary = "Atualizar preço do produto", description = "Atualiza o preço de um produto específico")
+    @UpdatePriceProductResponseExample
     public ResponseEntity<?> updatePriceProduct(
             final @RequestHeader(value = "Authorization") String authorization,
             final @PathVariable("id") Long id,
@@ -132,7 +132,7 @@ public class ProductController {
     }
 
     @PostMapping("/update-stock/{id}")
-    @Operation(summary = "Atualizar estoque do produto", description = "Atualiza o estoque de um produto específico")
+    @UpdateStockProductResponseExample
     public ResponseEntity<?> updateStockProduct(
             final @RequestHeader(value = "Authorization") String authorization,
             final @PathVariable("id") Long id,

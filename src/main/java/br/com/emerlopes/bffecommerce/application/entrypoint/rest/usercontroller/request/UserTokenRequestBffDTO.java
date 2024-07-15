@@ -1,4 +1,4 @@
-package br.com.emerlopes.bffecommerce.application.entrypoint.rest.dto.request;
+package br.com.emerlopes.bffecommerce.application.entrypoint.rest.usercontroller.request;
 
 import lombok.Builder;
 import lombok.Data;
