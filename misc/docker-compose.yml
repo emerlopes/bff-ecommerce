@@ -4,7 +4,7 @@ services:
 
   ordermanagement:
     image: emerlopes95/payment:latest
-    container_name: payment
+    container_name: payments
     ports:
       - "8084:8084"
     networks:
