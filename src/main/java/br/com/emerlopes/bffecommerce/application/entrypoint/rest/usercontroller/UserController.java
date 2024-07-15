@@ -9,6 +9,7 @@ import br.com.emerlopes.bffecommerce.domain.entity.RegisterUserDomainEntity;
 import br.com.emerlopes.bffecommerce.domain.entity.UserTokenDomainEntity;
 import br.com.emerlopes.bffecommerce.domain.usecase.userauthentication.RegisterUserUseCase;
 import br.com.emerlopes.bffecommerce.domain.usecase.usertoken.UserTokenUseCase;
+import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -62,7 +63,7 @@ public class UserController {
     @PostMapping("/register-user")
     @RegisterUserResponseExample
     public ResponseEntity<?> registerGuest(
-            final @RequestHeader(value = "Authorization", required = false) String authorization,
+            @Parameter(description = "Token de autorização: obrigatório apenas para cadastro de usuários com perfil admin", required = false) final @RequestHeader(value = "Authorization", required = false) String authorization,
             final @RequestBody RegisterUserRequestBffDTO request
     ) {
         try {

@@ -23,7 +23,7 @@ import java.lang.annotation.Target;
                         schema = @Schema(implementation = RegisterUserRequestBffDTO.class),
                         examples = {
                                 @ExampleObject(
-                                        name = "Register User Request Example",
+                                        name = "Register User Request Example: Guest",
                                         summary = "Exemplo de JSON para registrar usuário convidado",
                                         value = """
                                                 {
@@ -34,7 +34,7 @@ import java.lang.annotation.Target;
                                                 """
                                 ),
                                 @ExampleObject(
-                                        name = "Register User Request Example",
+                                        name = "Register User Request Example: User",
                                         summary = "Exemplo de JSON para registrar usuário",
                                         value = """
                                                 {
@@ -45,7 +45,7 @@ import java.lang.annotation.Target;
                                                 """
                                 ),
                                 @ExampleObject(
-                                        name = "Register User Request Example",
+                                        name = "Register User Request Example: Admin",
                                         summary = "Exemplo de JSON para registrar usuário administrador",
                                         value = """
                                                 {
