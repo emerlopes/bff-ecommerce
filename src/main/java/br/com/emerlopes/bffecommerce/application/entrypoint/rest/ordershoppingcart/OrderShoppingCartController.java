@@ -1,5 +1,7 @@
 package br.com.emerlopes.bffecommerce.application.entrypoint.rest.ordershoppingcart;
 
+import br.com.emerlopes.bffecommerce.application.entrypoint.rest.ordershoppingcart.examples.FindOrderByIdResponseExamples;
+import br.com.emerlopes.bffecommerce.application.entrypoint.rest.ordershoppingcart.examples.FindOrderByUsernameResponseExamples;
 import br.com.emerlopes.bffecommerce.application.entrypoint.rest.ordershoppingcart.examples.OrdersCheckoutRequestBodyExample;
 import br.com.emerlopes.bffecommerce.application.entrypoint.rest.ordershoppingcart.examples.UpdateOrdersCheckoutRequestBodyExample;
 import br.com.emerlopes.bffecommerce.application.shared.response.CustomResponseDTO;
@@ -13,7 +15,6 @@ import br.com.emerlopes.bffecommerce.domain.usecase.order.FindOrderByUsernameUse
 import br.com.emerlopes.bffecommerce.domain.usecase.order.UpdateOrderStatusUseCase;
 import br.com.emerlopes.bffecommerce.infrastructure.integrations.shoppingcart.request.OrderRequestDTO;
 import br.com.emerlopes.bffecommerce.application.entrypoint.rest.ordershoppingcart.dto.UpdateOrderBffRequestDTO;
-import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
@@ -74,7 +75,7 @@ public class OrderShoppingCartController {
     }
 
     @GetMapping("/{orderId}")
-    @Operation(summary = "Encontrar pedido por ID", description = "Retorna um pedido específico pelo ID")
+    @FindOrderByIdResponseExamples
     public ResponseEntity<?> findOrderById(
             final @RequestHeader(value = "Authorization") String authorization,
             final @PathVariable Long orderId
@@ -90,7 +91,7 @@ public class OrderShoppingCartController {
     }
 
     @GetMapping("/user/{username}")
-    @Operation(summary = "Encontrar pedidos por usuário", description = "Retorna os pedidos de um usuário específico pelo nome de usuário")
+    @FindOrderByUsernameResponseExamples
     public ResponseEntity<?> findOrderByUsername(
             final @RequestHeader(value = "Authorization") String authorization,
             final @PathVariable("username") String username
