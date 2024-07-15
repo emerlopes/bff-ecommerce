@@ -21,16 +21,41 @@ import java.lang.annotation.Target;
         requestBody = @RequestBody(
                 content = @Content(
                         schema = @Schema(implementation = RegisterUserRequestBffDTO.class),
-                        examples = @ExampleObject(
-                                name = "Register User Request Example",
-                                summary = "Exemplo de JSON para registrar usuário",
-                                value = """
-                                        {
-                                            "username": "user",
-                                            "password": "password"
-                                        }
-                                        """
-                        )
+                        examples = {
+                                @ExampleObject(
+                                        name = "Register User Request Example",
+                                        summary = "Exemplo de JSON para registrar usuário convidado",
+                                        value = """
+                                                {
+                                                    "username": "username",
+                                                    "password": "password",
+                                                    "role": "ROLE_GUEST"
+                                                }
+                                                """
+                                ),
+                                @ExampleObject(
+                                        name = "Register User Request Example",
+                                        summary = "Exemplo de JSON para registrar usuário",
+                                        value = """
+                                                {
+                                                    "username": "username",
+                                                    "password": "password",
+                                                    "role": "ROLE_USER"
+                                                }
+                                                """
+                                ),
+                                @ExampleObject(
+                                        name = "Register User Request Example",
+                                        summary = "Exemplo de JSON para registrar usuário administrador",
+                                        value = """
+                                                {
+                                                    "username": "username",
+                                                    "password": "password",
+                                                    "role": "ROLE_ADMIN"
+                                                }
+                                                """
+                                )
+                        }
                 )
         ),
         responses = {
