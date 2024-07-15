@@ -29,6 +29,7 @@ código modular e fácil de manter.
 | `/application`    | Camada de Aplicação      | Contém os serviços e controladores responsáveis pelo processamento das solicitações e pela lógica de negócio.              |
 | `/domain`         | Camada de Domínio        | Define as entidades do domínio, repositórios e regras de negócio que regem o comportamento do sistema.                     |
 | `/infrastructure` | Camada de Infraestrutura | Gerencia a comunicação com sistemas externos, como bancos de dados e serviços externos, e configurações de infraestrutura. |
+| /repository       | Camada de Repositório    | Responsável por acessar o banco de dados e realizar operações de leitura e gravação.                                       |
 
 - Requisitos: Para executar o projeto, é necessário ter o JDK 17 ou superior e o Gradle 6.8 ou superior instalados na
   máquina e executar todos os microserviços necessários.
@@ -73,5 +74,6 @@ código modular e fácil de manter.
 
 ## Endpoints
 
-Os detalhes dos endpoints da API, incluindo descrições, parâmetros de entrada e exemplos de resposta, estão disponíveis em [`swagger-ui`](http://localhost:8080/swagger-ui/index.html#/), após a execução do projeto.
+Os detalhes dos endpoints da API, incluindo descrições, parâmetros de entrada e exemplos de resposta, estão disponíveis
+em [`swagger-ui`](http://localhost:8080/swagger-ui/index.html#/), após a execução do projeto.
 
